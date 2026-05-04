@@ -1011,7 +1011,7 @@ async function main() {
       el("span", { text: "Route start hotel" }),
     ]);
 
-    const select = el("select", { id: "baseHotel", style: "width: 240px; padding: 8px 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.03); color: #e7eefc" });
+    const select = el("select", { id: "baseHotel", class: "select" });
 
     const hotelIds = [...HOTEL_GROUPS.B.placeIds, ...HOTEL_GROUPS.C.placeIds];
     for (const id of hotelIds) {
@@ -1133,6 +1133,11 @@ async function main() {
   buildBaseHotelPicker();
   setActiveTab(activeHotelGroupKey);
   rerenderAll();
+
+  // Helps Leaflet render correctly when the mobile layout changes.
+  window.addEventListener("resize", () => {
+    map.invalidateSize({ animate: false });
+  });
 }
 
 main().catch((err) => {
