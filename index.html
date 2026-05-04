@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ho Chi Minh City Work Trip Tour Map (Jun 7–15, 2026)</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header__title">
+      <h1>Ho Chi Minh City Tour Planner</h1>
+      <div class="header__subtitle">Jun 7–15, 2026 • Work: Jun 8–11 (9:00–17:00) • Base: near Jabil B3 (Thu Duc)</div>
+    </div>
+
+    <div class="header__controls">
+      <label class="control">
+        <span>FX (VND per $1)</span>
+        <input id="fxRate" type="number" min="15000" max="40000" step="50" value="25000" />
+      </label>
+      <button id="fitAll" class="btn" type="button">Fit map</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="sidebar">
+      <div class="panel">
+        <h2>Pick a Day</h2>
+        <div id="dayList" class="dayList"></div>
+        <div class="muted">
+          Routes use a public OSRM router; if it’s unavailable, the map falls back to straight lines.
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Hotel Options (Nicest + Best Night Views)</h2>
+        <div class="tabs">
+          <button id="tabB" class="tab tab--active" type="button">Option B: Thao Dien (D2)</button>
+          <button id="tabC" class="tab" type="button">Option C: District 1</button>
+        </div>
+        <div id="hotelList" class="hotelList"></div>
+        <div class="muted">
+          Nightly prices are typical ranges (variable by date, taxes, promos). Use them for budgeting.
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Food Plan (Your constraint)</h2>
+        <ul class="bullets">
+          <li>All meals ordered from <a href="https://koshersaigon.com/collections/catering" target="_blank" rel="noreferrer">koshersaigon.com catering</a>.</li>
+          <li>Ask hotel for in-room fridge + front desk delivery acceptance.</li>
+          <li>Tour days: order portable items the night before + carry water.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2>Legend</h2>
+        <div class="legend">
+          <div><span class="dot dot--hotel"></span> Hotels</div>
+          <div><span class="dot dot--work"></span> Work (Jabil)</div>
+          <div><span class="dot dot--history"></span> History</div>
+          <div><span class="dot dot--market"></span> Markets / shopping</div>
+          <div><span class="dot dot--tailor"></span> Custom clothing</div>
+          <div><span class="dot dot--view"></span> City views / photography</div>
+          <div><span class="dot dot--nature"></span> Nature / day trips</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mapWrap">
+      <div id="map" class="map"></div>
+      <div class="mapOverlay">
+        <div id="daySummary" class="daySummary"></div>
+      </div>
+    </section>
+  </main>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <script src="./app.js"></script>
+</body>
+</html>
